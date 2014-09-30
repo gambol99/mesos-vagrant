@@ -1,0 +1,27 @@
+---
+- hostname: mesos101
+  box_name: ubuntu
+  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  bootstrap:
+    type: script
+    script: ./boot/mesos.sh
+  networks:
+  - name: private_network
+    type: dhcp
+  spec:
+    cpus: 1
+    memory: 2048
+    biosbootmenu: disabled
+- hostname: mesos102
+  box_name: ubuntu
+  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  bootstrap:
+    type: script
+    script: ./boot/mesos.sh
+  networks:
+  - name: private_network
+    type: dhcp
+  spec:
+    cpus: 1
+    memory: 2048
+    biosbootmenu: disabled
