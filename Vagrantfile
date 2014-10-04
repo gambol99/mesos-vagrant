@@ -14,7 +14,7 @@ Default_Box = [{
   'network'  => [
     {
       'name' => 'private_network',
-      'type' => 'dhcp'
+      'ip'   => '10.99.250.10'
     }
   ],
   'spec' => {

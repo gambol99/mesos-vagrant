@@ -7,7 +7,7 @@
     script: ./boot/mesos.sh
   networks:
   - name: private_network
-    type: dhcp
+    ip: 10.99.250.10
   spec:
     cpus: 1
     memory: 2048
@@ -20,7 +20,7 @@
     script: ./boot/mesos.sh
   networks:
   - name: private_network
-    type: dhcp
+    ip: 10.99.250.11
   spec:
     cpus: 1
     memory: 2048
