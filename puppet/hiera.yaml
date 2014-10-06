@@ -1,0 +1,23 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-06 16:26:11 +0100 (Mon, 06 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+:logger: puppet
+:backends:
+  - yaml
+:hierarchy:
+  - "common/dns"
+  - "common/datacenters/%{::datacenter}"
+  - "common/os/%{::operatingsystem}"
+  - "common/hosts/%{::hostname}"
+  - "common/hosts/%{::nodename}"
+  - "common/modules/%{module_name}"
+  - "common/common"
+  - "%{::environment}/modules/%{module_name}"
+  - "%{::environment}/hosts/%{::hostname}"
+
+:yaml:
+  :datadir: /etc/puppet/data

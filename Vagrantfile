@@ -36,8 +36,9 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_check_update = false
-  config.vm.synced_folder 'puppet/', '/etc/puppet', disabled: false
-  config.vm.provision :shell, :path => BOOTSTRAP   if BOOTSTRAP
+  if File.exists?('./puppet')
+    config.vm.synced_folder 'puppet/', '/etc/puppet', disabled: false
+  end
   vagrant_boxes do |settings|
     config.vm.define settings['hostname'] do |x|
       if settings['bootstrap']

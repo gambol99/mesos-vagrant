@@ -17,11 +17,11 @@ centos() {
 }
 
 centos6() {
-  grep -q 'CentOS release 6' $CENTOS_VERSION 2>/dev/null && return 0 || return 1 
+  grep -q 'CentOS release 6' $CENTOS_VERSION 2>/dev/null && return 0 || return 1
 }
 
 centos7() {
-  grep -q 'CentOS Linux release 7' $CENTOS_VERSION 2>/dev/null && return 0 || return 1 
+  grep -q 'CentOS Linux release 7' $CENTOS_VERSION 2>/dev/null && return 0 || return 1
 }
 
 ubuntu() {
@@ -34,13 +34,13 @@ install_puppet() {
       if [ ! -f "/etc/yum.repos.d/puppetlabs.repo" ]; then
         cat > /etc/yum.repos.d/puppetlabs.repo <<EOF
 [puppetlabs-products]
-name=Puppet Labs Products El 6 
+name=Puppet Labs Products El 6
 baseurl=http://yum.puppetlabs.com/el/6.4/products/x86_64/
 gpgcheck=0
 enabled=1
 
 [puppetlabs-deps]
-name=Puppet Labs Dependencies El 6 
+name=Puppet Labs Dependencies El 6
 baseurl=http://yum.puppetlabs.com/el/6.4/dependencies/x86_64/
 gpgcheck=0
 enabled=1
@@ -63,15 +63,17 @@ enabled=1
 EOF
       fi
     fi
-  elif ubuntu
-
-
+  elsif ubuntu
+    wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+    sudo dpkg -i puppetlabs-release-precise.deb
+    sudo apt-get update
+    sudo apt-get install -y puppet
   fi
 }
 
 say "Installing Puppet"
 install_puppet
 
-say "Puppet Apply" 
+say "Puppet Apply"
 puppet apply /etc/puppet/manifests/default.pp
 
