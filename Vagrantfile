@@ -36,6 +36,8 @@ end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_check_update = false
+  config.vm.synced_folder 'puppet/', '/etc/puppet', disabled: false
+  config.vm.provision :shell, :path => BOOTSTRAP   if BOOTSTRAP
   vagrant_boxes do |settings|
     config.vm.define settings['hostname'] do |x|
       if settings['bootstrap']
@@ -47,13 +49,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
       x.vm.box = settings['box_name']
       x.vm.box_url = settings['box_url']
-      x.vm.host_name = settings['hostname'] 
+      x.vm.host_name = settings['hostname']
       ( settings['networks'] || [] ).each do |n|
         x.vm.network n['name'], type: :dhcp if n['type'] == 'dhcp'
         x.vm.network n['name'], ip: n['ip'] if n['ip']
       end
       x.vm.provider :virtualbox do |v|
-        v.gui   = settings['gui'] || true        
+        v.gui   = settings['gui'] || true
         v.name  = settings['hostname']
         (settings['spec'] || {}).each_pair do |key,value|
           v.customize [ "modifyvm", :id, "--#{key}", value ]
