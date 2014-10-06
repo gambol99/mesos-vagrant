@@ -1,0 +1,16 @@
+{
+  "id": "redis-master",
+  "cpus": 0.5,
+  "mem": 128.0,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "redis",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 6379, "hostPort": 0, "protocol": "tcp"}
+      ]
+    }
+  }
+}
