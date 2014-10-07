@@ -9,15 +9,9 @@
 :backends:
   - yaml
 :hierarchy:
-  - "common/dns"
-  - "common/datacenters/%{::datacenter}"
-  - "common/os/%{::operatingsystem}"
-  - "common/hosts/%{::hostname}"
-  - "common/hosts/%{::nodename}"
+  - "common/environment/%{environment}"
   - "common/modules/%{module_name}"
-  - "common/common"
-  - "%{::environment}/modules/%{module_name}"
-  - "%{::environment}/hosts/%{::hostname}"
-
+  - "common/os/%{::operatingsystem}"
+  - "common/defaults"
 :yaml:
   :datadir: /etc/puppet/data

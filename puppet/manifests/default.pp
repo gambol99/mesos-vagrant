@@ -14,10 +14,6 @@ Exec {
   logoutput => true
 }
 
-Package {
-  allow_virtual => true
-}
-
 Service {
   ensure     => 'running',
   enable     => true,
@@ -28,6 +24,8 @@ Service {
 File {
   backup   => main,
   checksum => md5,
+  owner    => 'root',
+  group    => 'root',
   ensure   => file,
   force    => false,
   ignore   => [

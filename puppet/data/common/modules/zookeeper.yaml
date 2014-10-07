@@ -1,0 +1,14 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-07 12:32:54 +0100 (Tue, 07 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+zookeeper::version: installed
+zookeeper::package_name: zookeeper
+zookeeper::options:
+  tickTime: 2000
+  initLimit: 10
+  syncLimit: 5
+  snapCount: 1000
+  leaderServes: yes

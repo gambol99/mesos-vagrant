@@ -100,7 +100,7 @@ module Classification
 
     def options
       @options ||= {
-        :config  => './classification.yaml',
+        :config  => '/etc/puppet/classification.yaml',
         :verbose => false
       }
     end
@@ -115,7 +115,7 @@ module Classification
         o.on( '-v', '--verbose', 'switch on verbose mode' ) { options[:verbose] = true }
         o.command :classify, 'classify the node based on the configuration' do
           o.command_alias :cl
-          o.on( '-h HOSTNAME', '--hostname HOSTNAME', 'the hostname of the box to classify' ) { |x| options[:hostname] = x }
+          o.on( '-H HOSTNAME', '--hostname HOSTNAME', 'the hostname of the box to classify' ) { |x| options[:hostname] = x }
           o.on_command { options[:command] = :define }
         end
         o.command :list, 'generate the classification for all the nodes' do

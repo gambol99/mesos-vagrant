@@ -4,4 +4,29 @@
 #
 #  vim:ts=2:sw=2:et
 #
+---
+mesos::common::options:
+  log_dir: /var/log/mesos
+  use_syslog: 'true'
+  ulimit: 8192
+  conf_dir: /etc/mesos'
+  owner: root
+  group: root
+  env_var: {}
+  masters:
+    - mesos-master101
+    - mesos-master102
+  slaves:
+    - mesos-slave101
+    - mesos-slave102
+    - mesos-slave103
 
+mesos::slave::options:
+  containerizers:
+    value: 'docker,mesos'
+  executor_registration_timeout:
+    value: '5mins'
+
+mesos::master::options:
+  quorum:
+    value: '1'

@@ -1,0 +1,10 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-07 12:34:47 +0100 (Tue, 07 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+sysconfig::directory: /etc/default
+zookeeper::config_dir: /etc/zookeeper/conf
+zookeeper::packages:
+  - zookeeperd

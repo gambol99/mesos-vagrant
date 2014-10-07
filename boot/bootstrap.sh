@@ -64,7 +64,7 @@ EOF
       fi
     fi
   elsif ubuntu
-    wget https://apt.puppetlabs.com/puppetlabs-release-precise.deb
+    wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
     sudo dpkg -i puppetlabs-release-precise.deb
     sudo apt-get update
     sudo apt-get install -y puppet
@@ -74,6 +74,9 @@ EOF
 say "Installing Puppet"
 install_puppet
 
+say "Installing the dependencies"
+gem install --no-rdoc --no-ri -V deep_merge
+gem install --no-rdoc --no-ri -V optionscrapper
+
 say "Puppet Apply"
 puppet apply /etc/puppet/manifests/default.pp
-
