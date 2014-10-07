@@ -1,0 +1,10 @@
+domain <%=@domain%>
+search <%=@search_domains.join(',')%>
+<%- @nameservers.each do |x| -%>
+nameserver <%=x%>
+<%- end -%>
+<%- if @options.any? -%>
+<%- @options.sort.each |x| -%>
+options <%=x%>
+<%- end -%>
+<%- end -%>
