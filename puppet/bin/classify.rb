@@ -7,7 +7,7 @@
 #
 require 'yaml'
 require 'optionscrapper'
-require 'colorize'
+require 'deep_merge'
 
 module Classification
   class CLI
@@ -23,35 +23,61 @@ module Classification
     end
 
     private
-    def classify
+    def define
       raise ArgumentError, "you have not specified a hostname to classify" unless options[:hostname]
-      verbose "classify: attemping to classify hostname: '#{options[:hostname]}'"
-      classification options[:hostname] do |cfg|
-        puts cfg.to_yaml if cfg and cfg.is_a? Hash
+      raise ArgumentError, "the hostname: #{options[:hostname]} is invalid" unless hostname? options[:hostname]
+      verbose "define: attemping to classify hostname: '#{options[:hostname]}'"
+      classify options[:hostname] do |node|
+        puts node.to_yaml
       end
     end
 
-    def classification hostname
-      host = {}
-      nodes.each do |filter,data|
-        # step: take the node regex and apply against hostname
-        if hostname =~ /#{filter}/
-          verbose "found classification for host: #{hostname}, filter: #{filter}, data: #{data}"
-          # step: does the config have any groups
-          if data.has_key? 'group'
+    def list
+      # step: set the defaults
+      options[:hostname]  ||= '.*'
+      verbose "list: generating classification fro all nodes: regex: '#{options[:regex]}'"
+      classify options[:hostname], true do |node|
+        puts node.to_yaml
+      end
+    end
 
+    def classify hostname, regex = false
+      # step: iterate the nodes
+      list = []
+      verbose "classify: hostname: #{hostname}"
+      nodes hostname, regex do |name,definition|
+        verbose "classify: name: #{name}, definition: #{definition}"
+        host = {}
+        # step: do we have any groups we need to merge?
+        if definition.has_key? 'groups'
+          definition['groups'].each do |x|
+            host.deep_merge!( groups[x] || {} )
+          end
         end
+        # step: merge the definition into the host config
+        host.deep_merge!(definition)
+        # step: delete the groups
+        host.delete 'groups'
+        # step: yield if required
+        yield host if block_given?
+        list << host
       end
-      yield host_classification if block_given?
-
+      list
     end
 
-    def nodes
-      load_classification['nodes'].each_pair { |k,v| yield k,v } if block_given?
-      load_classification['nodes']
+    def nodes hostname, regex = false
+      raise ArgumentError, "yopu have not passed a block" unless block_given?
+      (classification['nodes'] || {}).each_pair do |k,v|
+        yield k,v if hostname[/#{k}/] and !regex
+        yield k,v if k[/#{hostname}/] and regex
+      end
     end
 
-    def load_classification
+    def groups
+      classification['groups']
+    end
+
+    def classification
       verbose "classify: using the configuration file: #{config}"
       @classification ||= nil
       unless @classification
@@ -65,13 +91,17 @@ module Classification
     end
 
     def verbose message
-      puts "[verb] %s".green % [ message ] if options[:verbose]
+      puts "[verb] %s" % [ message ] if options[:verbose]
+    end
+
+    def hostname? name
+      name =~ /(^[[:alpha:]\-]*)([0-9]+)/
     end
 
     def options
       @options ||= {
         :config  => './classification.yaml',
-        :verbose => true
+        :verbose => false
       }
     end
 
@@ -86,7 +116,12 @@ module Classification
         o.command :classify, 'classify the node based on the configuration' do
           o.command_alias :cl
           o.on( '-h HOSTNAME', '--hostname HOSTNAME', 'the hostname of the box to classify' ) { |x| options[:hostname] = x }
-          o.on_command { options[:command] = :classify }
+          o.on_command { options[:command] = :define }
+        end
+        o.command :list, 'generate the classification for all the nodes' do
+          o.command_alias :ls
+          o.on( '-r REGEX', '--regex REGEX', 'a regex to filter the ndoes on' ) { |x| options[:hostname] = x }
+          o.on_command { options[:command] = :list }
         end
       end
     end

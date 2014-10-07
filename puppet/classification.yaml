@@ -7,6 +7,8 @@
 ---
 groups:
   puppet:
+    parameters:
+      environment: production
     classes:
       ntp: {}
 
@@ -15,11 +17,11 @@ nodes:
     groups:
       - puppet
     classes:
-      - zookeeper::cluster:
+      zookeeper::cluster:
         cluster_name: mesos
-      - mesos-master:
+      mesos-master:
         cluster_name: noths
   'mesos-slave[0-9]+$':
     classes:
-      - mesos-slave:
+      mesos-slave:
         cluster_name: noths
