@@ -51,4 +51,31 @@
     cpus: 1
     memory: 2048
     biosbootmenu: disabled
+- hostname: mesos-slave103
+  box_name: ubuntu
+  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  bootstrap:
+    type: script
+    script: ./boot/bootstrap.sh
+  networks:
+  - name: private_network
+    ip: 10.0.1.203
+  spec:
+    cpus: 1
+    memory: 2048
+    biosbootmenu: disabled
+- hostname: mesos-slave104
+  box_name: ubuntu
+  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  bootstrap:
+    type: script
+    script: ./boot/bootstrap.sh
+  networks:
+  - name: private_network
+    ip: 10.0.1.204
+  spec:
+    cpus: 1
+    memory: 2048
+    biosbootmenu: disabled
+
 
