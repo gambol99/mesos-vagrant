@@ -49,12 +49,14 @@ install_puppet() {
         sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
       fi
     fi
-  elsif ubuntu
-    say "Installing Puppet"
-    sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+    yum update -y puppet
+  elif ubuntu; then
+    say "Installing Puppet for Ubuntu"
+    sudo wget -q https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
     sudo dpkg -i puppetlabs-release-trusty.deb
     sudo apt-get update
     sudo apt-get install -y puppet
+    sudo apt-get install -y --force-yes --only-upgrade puppet
   fi
   say "Puppet Verion: `puppet --version`"
 }

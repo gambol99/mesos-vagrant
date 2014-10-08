@@ -4,6 +4,7 @@
 #
 #  vim:ts=2:sw=2:et
 #
+docker::version: 1.0.1~dfsg1-0ubuntu1~ubuntu0.14.04.1
 docker::package_name: docker.io
 docker::service_name: docker.io
 resolv::resolver: /etc/resolvconf/resolv.conf.d/base

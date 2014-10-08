@@ -11,4 +11,10 @@ class resolv::config {
       mode    => '0444',
       content => template("${module_name}/resolv.conf.erb");
   }
+  if $::operatingsystem == 'Ubuntu' {
+    exec { '/sbin/resolvconf -u':
+      refreshonly => true,
+      subscribe   => File['/etc/resolv.conf'],
+    }
+  }
 }

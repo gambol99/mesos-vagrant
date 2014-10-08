@@ -5,5 +5,9 @@
 #  vim:ts=2:sw=2:et
 #
 class docker::install {
-  ensure_packages(['docker.io'])
+  package { 'docker.io':
+    alias  => 'docker',
+    ensure => $docker::version,
+    name   => $docker::package_name,
+  }
 }

@@ -6,7 +6,7 @@
 #
 class zookeeper::disabled {
   service { 'zookeeper':
-    ensure => 'stopped',
+    ensure => stopped,
     enable => false
   }
 }

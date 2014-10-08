@@ -1,7 +1,7 @@
 ---
 - hostname: mesos-master101
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
@@ -13,8 +13,8 @@
     memory: 1024
     biosbootmenu: disabled
 - hostname: mesos-master102
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
@@ -22,12 +22,12 @@
   - name: private_network
     ip: 10.0.1.101
   spec:
-    cpus: 2
+    cpus: 1
     memory: 1024
     biosbootmenu: disabled
 - hostname: mesos-slave101
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
@@ -39,8 +39,8 @@
     memory: 2048
     biosbootmenu: disabled
 - hostname: mesos-slave102
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
@@ -48,12 +48,12 @@
   - name: private_network
     ip: 10.0.1.202
   spec:
-    cpus: 1
+    cpus: 2
     memory: 2048
     biosbootmenu: disabled
 - hostname: mesos-slave103
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
@@ -65,8 +65,8 @@
     memory: 2048
     biosbootmenu: disabled
 - hostname: mesos-slave104
-  box_name: ubuntu
-  box_url: https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box
+  box_name: cloud-ubuntu
+  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh

@@ -12,4 +12,7 @@ class docker(
   class { 'install': }
   ->
   class { 'config':  }
+
+  contain docker::install
+  contain docker::config
 }
