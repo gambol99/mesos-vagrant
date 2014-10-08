@@ -11,6 +11,7 @@ groups:
       application: mesos
       environment: dev
     classes:
+      resolv:
       bash:
       etc::hosts:
       repos:

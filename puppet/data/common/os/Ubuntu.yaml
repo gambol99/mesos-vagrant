@@ -4,6 +4,7 @@
 #
 #  vim:ts=2:sw=2:et
 #
+resolv::resolver: /etc/resolvconf/resolv.conf.d/base
 sysconfig::directory: /etc/default
 zookeeper::config_dir: /etc/zookeeper/conf
 zookeeper::packages:
