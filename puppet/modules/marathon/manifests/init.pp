@@ -7,13 +7,13 @@
 class marathon(
   $version      = 'installed',
   $package_name = 'marathon',
+) {
 
-) { 
-  require mesos::master
+  $marathon_options = hiera_hash('marathon::options',{})
 
   class { 'install':  }
   ->
   class { 'config':   }
-  -> 
+  ->
   class { 'services': }
 }

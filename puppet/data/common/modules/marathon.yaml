@@ -1,0 +1,16 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-08 11:58:27 +0100 (Wed, 08 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+marathon::options:
+  ha: 'true'
+  local_port_min: 2048
+  local_port_max: 32000
+  reconciliation_initial_delay: 30000
+  http_port: 8080
+  https_port: 8443
+  zk_timeout: 10000
+  failover_timeout: 604800
