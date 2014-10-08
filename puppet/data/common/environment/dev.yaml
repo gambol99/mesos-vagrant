@@ -17,3 +17,9 @@ etc::hosts::entries:
   mesos-slave104.%{::domain}:
     ip: 10.0.1.204
     host_aliases: 'mesos-slave104'
+
+mesos::master::options:
+  ip: "%{::ipaddress_eth1}"
+
+mesos::slave::options:
+  ip: "%{::ipaddress_eth1}"
