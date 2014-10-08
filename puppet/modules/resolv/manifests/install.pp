@@ -5,5 +5,5 @@
 #  vim:ts=2:sw=2:et
 #
 class resolv::install {
-  ensure_packages(['bind-utils'])
+  ensure_packages($resolv::packages)
 }

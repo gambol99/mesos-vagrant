@@ -5,14 +5,16 @@
 #  vim:ts=2:sw=2:et
 #
 class resolv(
-  $search_domains = $::domain,
+  $search_domains = [ $domain ],
   $nameservers    = [ '8.8.8.8', '8.8.4.4' ],
   $options        = [
                       'rotate',
                       'timeout:2',
                     ],
-  $resolver       = '/etc/resolv.conf',
+  $resolver       = '/etc/resolv.conf'
 ) {
+  $packages = hiera_array('resolv::packages',['bind-utils'])
+
   class { 'install': }
   ->
   class { 'config':  }
