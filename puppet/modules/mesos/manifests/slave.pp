@@ -41,6 +41,7 @@ class mesos::slave(
       group   => $group;
 
   }
+
   # step: add and remove the configuration options
   create_resources( 'mesos::config::option', mesos_property( $options ), {
       type     => 'slave',

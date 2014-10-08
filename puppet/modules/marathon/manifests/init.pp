@@ -16,4 +16,8 @@ class marathon(
   class { 'config':   }
   ->
   class { 'services': }
+
+  contain marathon::install
+  contain marathon::config
+  contain marathon::services
 }
