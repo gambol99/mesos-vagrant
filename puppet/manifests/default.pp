@@ -9,8 +9,8 @@ filebucket {
 }
 
 Exec {
-  path    => "/usr/bin:/usr/sbin/:/bin:/sbin",
-  timeout => 20,
+  path      => "/usr/bin:/usr/sbin/:/bin:/sbin",
+  timeout   => 20,
   logoutput => true
 }
 

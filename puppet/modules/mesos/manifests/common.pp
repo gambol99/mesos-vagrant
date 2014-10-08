@@ -9,6 +9,7 @@ class mesos::common(
   $package_name = 'mesos'
 ) {
   require repos
+  require etc::hosts
 
   $common_options = hiera_hash('mesos::common::options',{})
 
