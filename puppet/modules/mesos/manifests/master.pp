@@ -5,14 +5,15 @@
 #  vim:ts=2:sw=2:et
 #
 class mesos::master(
-  $cluster_name = 'mesos',
   $config_file  = '/etc/default/mesos-master',
   $config_dir   = '/etc/mesos-master',
   $working_dir  = '/var/lib/mesos',
 ) inherits mesos::common {
+
   include zookeeper
 
-  $master_options = hiera_hash('mesos::master::options',{})
+  $options = hiera_hash('mesos::master::options',{})
+  $removal = hiera_hash('mesos::master::options_removal',{})
 
   file {
     $config_dir:
@@ -30,16 +31,20 @@ class mesos::master(
   }
   ->
   mesos::config::master { 'work_dir':
-    value    => $working_dir,
-  }
-  ->
-  mesos::config::master { 'cluster':
-    value    => $cluster_name,
+    value => $working_dir,
   }
 
-  create_resources( 'mesos::config::master', $master_options )
+  create_resources( 'mesos::config::option', mesos_property( $options ), {
+      type     => 'master',
+      notified => Service['mesos-master']
+    }
+  )
 
+  create_resources( 'mesos::config::option', mesos_property( $removal ), {
+      ensure   => absent,
+      type     => 'master',
+      notified => Service['mesos-master'],
+    }
+  )
   mesos::service { 'master': }
-
-  contain mesos::common
 }

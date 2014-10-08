@@ -22,7 +22,7 @@
   - name: private_network
     ip: 10.0.1.101
   spec:
-    cpus: 1
+    cpus: 2
     memory: 1024
     biosbootmenu: disabled
 - hostname: mesos-slave101
@@ -35,7 +35,7 @@
   - name: private_network
     ip: 10.0.1.201
   spec:
-    cpus: 1
+    cpus: 2
     memory: 2048
     biosbootmenu: disabled
 - hostname: mesos-slave102

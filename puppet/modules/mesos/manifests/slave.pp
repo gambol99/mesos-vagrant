@@ -11,8 +11,10 @@ class mesos::slave(
 ) inherits mesos::common {
 
   include docker
+  include zookeeper::disabled
 
-  $slave_options = hiera_hash('mesos::slave::options',{})
+  $options = hiera_hash('mesos::slave::options',{})
+  $removal = hiera_hash('mesos::slave::options_removal',{})
 
   file {
     $config_dir:
@@ -39,7 +41,19 @@ class mesos::slave(
       group   => $group;
 
   }
-  create_resources( 'mesos::config::slave', $slave_options )
+  # step: add and remove the configuration options
+  create_resources( 'mesos::config::option', mesos_property( $options ), {
+      type     => 'slave',
+      notified => Service['mesos-slave']
+    }
+  )
+
+  create_resources( 'mesos::config::option', mesos_property( $removal ), {
+      ensure   => absent,
+      type     => 'slave',
+      notified => Service['mesos-slave'],
+    }
+  )
 
   mesos::service { 'slave': }
 }

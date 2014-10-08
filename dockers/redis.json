@@ -1,6 +1,6 @@
 {
-  "id": "redis-master",
-  "cpus": 0.5,
+  "id": "redis-stats",
+  "cpus": 0.1,
   "mem": 128.0,
   "instances": 1,
   "container": {
@@ -9,7 +9,7 @@
       "image": "redis",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 6379, "hostPort": 0, "protocol": "tcp"}
+        { "containerPort": 6379, "hostPort": 6379, "protocol": "tcp"}
       ]
     }
   }

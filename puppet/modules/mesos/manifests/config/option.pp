@@ -8,13 +8,15 @@ define mesos::config::option(
 ) {
 
   $configuration_file = $type ? {
-    'common' => "/etc/mesos/${name}",
-    default  => "/etc/mesos-${type}/${name}"
+    'common'    => "/etc/mesos/${name}",
+    'resource'  => "/etc/mesos-slave/resources/${name}",
+    'attribute' => "/etc/mesos-slave/attributes/${name}",
+    default     => "/etc/mesos-${type}/${name}"
   }
 
   file {
     $configuration_file:
-      ensure => $present,
+      ensure => $ensure,
       owner  => $mesos::common::owner,
       group  => $mesos::common::group,
       mode   => '0440',

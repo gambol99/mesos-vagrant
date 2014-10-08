@@ -21,12 +21,21 @@ mesos::common::options:
     - mesos-slave102
     - mesos-slave103
 
+# ---- Mesos Slave Options -----
 mesos::slave::options:
-  containerizers:
-    value: 'docker,mesos'
-  executor_registration_timeout:
-    value: '5mins'
+  containerizers: 'docker,mesos'
+  executor_registration_timeout: '5mins'
+  logging_level: INFO
+  ports:
+    value: '[2048-32000]'
+    type: resource
 
+# ---- Mesos Master Options -----
 mesos::master::options:
-  quorum:
-    value: '1'
+  cluster: mesos
+  quorum: 1
+  logging_level: INFO
+mesos::master::options_removal:
+  slave_reregister_timeout: true
+
+# -------------------------------

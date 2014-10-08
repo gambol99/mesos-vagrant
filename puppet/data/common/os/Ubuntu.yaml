@@ -4,6 +4,8 @@
 #
 #  vim:ts=2:sw=2:et
 #
+docker::package_name: docker.io
+docker::service_name: docker.io
 resolv::resolver: /etc/resolvconf/resolv.conf.d/base
 resolv::packages:
   - bind9-host

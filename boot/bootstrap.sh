@@ -40,22 +40,25 @@ install_puppet() {
   if centos; then
     if centos6; then
       if [ ! -f "/etc/yum.repos.d/puppetlabs.repo" ]; then
+        say "Installing Puppet"
         sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
       fi
     else
       if [ ! -f "/etc/yum.repos.d/puppetlabs.repo" ]; then
+        say "Installing Puppet"
         sudo rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
       fi
     fi
   elsif ubuntu
-    wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
-    sudo dpkg -i puppetlabs-release-precise.deb
+    say "Installing Puppet"
+    sudo wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
+    sudo dpkg -i puppetlabs-release-trusty.deb
     sudo apt-get update
     sudo apt-get install -y puppet
   fi
+  say "Puppet Verion: `puppet --version`"
 }
 
-say "Installing Puppet"
 install_puppet
 
 say "Installing the dependencies"

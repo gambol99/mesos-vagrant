@@ -5,8 +5,11 @@
 #  vim:ts=2:sw=2:et
 #
 class docker(
-  $version      = 'installed',
-  $package_name = 'docker.io',
+  $version      = installed,
+  $package_name = 'docker-io',
+  $service_name = 'docker',
 ) {
   class { 'install': }
+  ->
+  class { 'config':  }
 }
