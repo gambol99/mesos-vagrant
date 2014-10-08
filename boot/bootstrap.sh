@@ -56,7 +56,7 @@ install_puppet() {
     sudo dpkg -i puppetlabs-release-trusty.deb
     sudo apt-get update
     sudo apt-get install -y puppet
-    sudo apt-get install -y --force-yes --only-upgrade puppet
+    sudo apt-get install -y --no-install-recommends --force-yes --only-upgrade puppet 2>/dev/null
   fi
   say "Puppet Verion: `puppet --version`"
 }

@@ -1,0 +1,24 @@
+/*
+   Author: Rohith (gambol99@gmail.com)
+   Date: 2014-10-08 17:29:44 +0100 (Wed, 08 Oct 2014)
+
+  vim:ts=2:sw=2:et
+*/
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "registry",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 5000, "hostPort": 5000, "protocol": "tcp"}
+      ]
+    }
+  },
+  "id": "docker-registry",
+  "instances": "1",
+  "constraints": [["hostname", "UNIQUE"]],
+  "cpus": "0.03",
+  "mem": "128"
+}
+
