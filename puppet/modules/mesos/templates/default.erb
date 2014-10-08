@@ -1,0 +1,12 @@
+<%-
+@options = @common_options
+def settings key, default = nil
+  @options[key] || default
+end
+-%>
+USE_SYSLOG="<%=settings('use_syslog','true')%>"
+LOG_DIR="<%=settings('log_dir','/var/log/mesos')%>"
+ULIMIT="-n <%=settings('ulimit','8192')%>"
+<%- settings('envs',{}).sort.each do |key,val| -%>
+export <%=key%>="<%=settings['envs'][key]%>"
+<%- end -%>
