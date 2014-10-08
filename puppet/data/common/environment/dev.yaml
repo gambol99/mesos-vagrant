@@ -1,19 +1,19 @@
 etc::hosts::entries:
-  master-master101.%{::domain}:
+  mesos-master101.%{::domain}:
     ip: 10.0.1.100
     host_aliases: 'mesos-master101'
-  master-master102.%{::domain}:
+  mesos-master102.%{::domain}:
     ip: 10.0.1.101
     host_aliases: 'mesos-master102'
-  master-slave101.%{::domain}:
+  mesos-slave101.%{::domain}:
     ip: 10.0.1.201
     host_aliases: 'mesos-slave101'
-  master-slave102.%{::domain}:
+  mesos-slave102.%{::domain}:
     ip: 10.0.1.202
     host_aliases: 'mesos-slave102'
-  master-slave101.%{::domain}:
+  mesos-slave103.%{::domain}:
     ip: 10.0.1.203
     host_aliases: 'mesos-slave103'
-  master-slave102.%{::domain}:
+  mesos-slave104.%{::domain}:
     ip: 10.0.1.204
     host_aliases: 'mesos-slave104'

@@ -10,6 +10,8 @@ class mesos::slave(
   $working_dir = '/tmp/mesos',
 ) inherits mesos::common {
 
+  include docker
+
   $slave_options = hiera_hash('mesos::slave::options',{})
 
   file {

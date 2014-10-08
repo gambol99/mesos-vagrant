@@ -15,5 +15,14 @@ class marathon::config {
       mode    => '0750',
       require => File['/etc/marathon'];
   }
+
+  # step: add the options
   create_resources( 'marathon::config::option', maratron_param( $marathon::marathon_options ) )
+
+  # step: remove any options we no longer need
+  create_resources( 'marathon::config::option',
+    maratron_param( $marathon::marathon_options_removed ), {
+      ensure => absent
+    }
+  )
 }

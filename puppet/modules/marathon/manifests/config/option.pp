@@ -10,7 +10,7 @@ define marathon::config::option(
 
   file {
     $configuration_file:
-      ensure => $present,
+      ensure => $ensure,
       mode   => '0440',
       notify => $notified;
   }

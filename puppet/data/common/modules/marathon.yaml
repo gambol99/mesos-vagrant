@@ -6,11 +6,13 @@
 #
 ---
 marathon::options:
-  ha: 'true'
-  local_port_min: 2048
-  local_port_max: 32000
-  reconciliation_initial_delay: 30000
-  http_port: 8080
-  https_port: 8443
-  zk_timeout: 10000
   failover_timeout: 604800
+  http_port: 8080
+  local_port_max: 32000
+  local_port_min: 2048
+  reconciliation_initial_delay: 30000
+  zk: 'zk://mesos-master101:2181,mesos-master102:2181/marathon'
+  zk_timeout: 10000
+
+marathon::options::removed:
+  ha: 'true'

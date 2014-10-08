@@ -8,8 +8,8 @@ class marathon(
   $version      = 'installed',
   $package_name = 'marathon',
 ) {
-
   $marathon_options = hiera_hash('marathon::options',{})
+  $marathon_options_removed = hiera_hash('marathon::options::removed',{})
 
   class { 'install':  }
   ->

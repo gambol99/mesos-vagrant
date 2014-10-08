@@ -16,9 +16,5 @@ class etc::hosts {
     ip           => '127.0.0.1',
     host_aliases => 'localhost';
   }
-  host { $fqdn:
-    ip           => $ipaddress,
-    host_aliases => "$hostname";
-  }
   create_resources( Host, $host_entries )
 }
