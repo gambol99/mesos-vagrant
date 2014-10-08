@@ -6,10 +6,10 @@
 #
 class etc::hosts {
   $host_entries = hiera_hash('etc::hosts::entries',{})
+
   exec { "/etc/hosts remove $hostname/$fqdn from 127.0.0.1":
-    path    => "/bin:/usr/bin",
-    command => "/bin/sed -i -e '/127.0.0.1.*${::hostname}/d' -e '/^#/d' /etc/hosts",
-    onlyif  => "/bin/egrep -q '^127.0.0.1.*${::hostname}' /etc/hosts",
+    command => "/bin/sed -i -e '/127.0.[10].1.*${hostname}/d' -e '/^#/d' /etc/hosts",
+    onlyif  => "/bin/egrep -q '^127.0.[10].1.*${hostname}' /etc/hosts",
   }
   ->
   host { 'localhost.localdomain':
