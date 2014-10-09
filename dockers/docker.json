@@ -5,8 +5,8 @@
       "image": "ubuntu"
     }
   },
-  "id": "ubuntu",
-  "instances": "3",
+  "id": "./frontend/web",
+  "instances": "2",
   "cpus": "0.2",
   "mem": "64",
   "uris": [],

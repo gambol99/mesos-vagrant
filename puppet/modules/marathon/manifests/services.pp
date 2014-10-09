@@ -5,5 +5,7 @@
 #  vim:ts=2:sw=2:et
 #
 class marathon::services {
-  service { 'marathon': }
+  service { 'marathon':
+    hasstatus => false,
+  }
 }

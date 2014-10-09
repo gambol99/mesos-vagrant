@@ -11,6 +11,8 @@ marathon::options:
   local_port_max: 32000
   local_port_min: 2048
   reconciliation_initial_delay: 30000
+  event_subscriber: http_callback
+  http_endpoints: http://localhost:2047
   zk: 'zk://mesos-master101:2181,mesos-master102:2181/marathon'
   zk_timeout: 10000
 
