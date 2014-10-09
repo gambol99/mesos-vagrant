@@ -24,10 +24,9 @@ Default_Box = [{
   }
 }]
 
-
 def vagrant_boxes &block
   @config = ( File.exist?( VAGRANT_CONFIG ) ) ? load_box_config : Default_Box
-  @config.each { |x| yield x }
+  @config['boxes'].each { |x| yield x }
 end
 
 def load_box_config

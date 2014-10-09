@@ -1,81 +1,70 @@
 ---
-- hostname: mesos-master101
+default_options: &defaults
   box_name: cloud-ubuntu
   box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.100
   spec:
-    cpus: 1
-    memory: 1024
-    biosbootmenu: disabled
-- hostname: mesos-master102
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-  bootstrap:
-    type: script
-    script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.101
-  spec:
-    cpus: 1
-    memory: 1024
-    biosbootmenu: disabled
-- hostname: mesos-slave101
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-  bootstrap:
-    type: script
-    script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.201
-  spec:
-    cpus: 2
-    memory: 2048
-    biosbootmenu: disabled
-- hostname: mesos-slave102
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-  bootstrap:
-    type: script
-    script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.202
-  spec:
-    cpus: 2
-    memory: 2048
-    biosbootmenu: disabled
-- hostname: mesos-slave103
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-  bootstrap:
-    type: script
-    script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.203
-  spec:
-    cpus: 1
-    memory: 2048
-    biosbootmenu: disabled
-- hostname: mesos-slave104
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
-  bootstrap:
-    type: script
-    script: ./boot/bootstrap.sh
-  networks:
-  - name: private_network
-    ip: 10.0.1.204
-  spec:
-    cpus: 1
-    memory: 2048
-    biosbootmenu: disabled
 
+default_master_specs: &default_specs
+  cpus: 1
+  memory: 1024
+  biosbootmenu: disabled
+
+default_slave_specs: &default_slave_specs
+  cpus: 2
+  memory: 2048
+  biosbootmenu: disabled
+
+boxes:
+  - <<: *defaults
+    hostname: mesos-master101
+    networks:
+    - name: private_network
+      ip: 10.0.1.100
+    spec:
+      <<: *default_specs
+  - <<: *defaults
+    hostname: mesos-master102
+    networks:
+    - name: private_network
+      ip: 10.0.1.101
+    spec:
+      <<: *default_specs
+  - <<: *defaults
+    hostname: mesos-slave101
+    networks:
+    - name: private_network
+      ip: 10.0.1.201
+    spec:
+      <<: *default_slave_specs
+  - <<: *defaults
+    hostname: mesos-slave102
+    networks:
+    - name: private_network
+      ip: 10.0.1.202
+    spec:
+      <<: *default_slave_specs
+  - <<: *defaults
+    hostname: mesos-slave103
+    networks:
+    - name: private_network
+      ip: 10.0.1.203
+    spec:
+      <<: *default_slave_specs
+  - <<: *defaults
+    hostname: mesos-slave104
+    networks:
+    - name: private_network
+      ip: 10.0.1.204
+    spec:
+      <<: *default_slave_specs
+  - <<: *defaults
+    hostname: events101
+    networks:
+    - name: private_network
+      ip: 10.0.1.111
+    spec:
+      <<: *default_specs
 

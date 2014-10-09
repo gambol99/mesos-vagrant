@@ -6,6 +6,15 @@
 #
 class marathon::services {
   service { 'marathon':
-    hasstatus => false,
+    status => '/usr/sbin/service marathon | grep -q running',
+  }
+
+  if $::operatingsystem == 'Ubuntu' {
+    # marathon returns 0 on exit even when not running, and for some reason the status field
+    # in the puppet service isn't being implemented!!! ARRRRGGG
+    exec { 'Ubuntu Marathon Service hack':
+      command => '/usr/sbin/service marathon start',
+      unless  => '/usr/sbin/service marathon status | grep -q running'
+    }
   }
 }

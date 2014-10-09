@@ -4,3 +4,9 @@
 [submodule "puppet/modules/apt"]
 	path = puppet/modules/apt
 	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "puppet/modules/rabbitmq"]
+	path = puppet/modules/rabbitmq
+	url = https://github.com/puppetlabs/puppetlabs-rabbitmq.git
+[submodule "puppet/modules/staging"]
+	path = puppet/modules/staging
+	url = https://github.com/nanliu/puppet-staging.git

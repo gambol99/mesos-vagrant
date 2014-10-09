@@ -1,0 +1,16 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-09 12:37:28 +0100 (Thu, 09 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+rabbitmq::admin_enable: true
+rabbitmq::default_user: admin
+rabbitmq::default_pass: guest
+
+events::rabbitmq_users:
+  events:
+    admin: true
+    password: events
+    tags: ['eventbus','admin']
