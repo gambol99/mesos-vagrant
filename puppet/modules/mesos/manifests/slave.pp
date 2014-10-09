@@ -55,6 +55,10 @@ class mesos::slave(
       notified => Service['mesos-slave'],
     }
   )
-
+  mesos::service { 'master':
+    enable  => false,
+    ensure  => stopped,
+  }
+  ->
   mesos::service { 'slave': }
 }

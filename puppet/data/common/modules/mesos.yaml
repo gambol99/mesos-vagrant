@@ -15,7 +15,7 @@ mesos::common::options:
   env_var: {}
   masters:
     - mesos-master101
-    - mesos-master102
+  #  - mesos-master102
   slaves:
     - mesos-slave101
     - mesos-slave102

@@ -5,8 +5,7 @@
 #  vim:ts=2:sw=2:et
 #
 class events(
-  $rabbitmq_users  = {},
-  $events_packages = []
+  $rabbitmq_users,
 ) {
   class { 'install':  }
   ->

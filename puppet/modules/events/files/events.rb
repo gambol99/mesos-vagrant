@@ -40,7 +40,7 @@ module Marathon
         @connection = Bunny.new( uri )
         @connection.start
         @channel  = @connection.create_channel
-        @exchange = @channel.topic( topic, :auto_delete => true, :durable => true )
+        @exchange = @channel.topic( topic, :auto_delete => true, :durable => true, :persistent => true )
         set :exchange, @exchange
       end
 

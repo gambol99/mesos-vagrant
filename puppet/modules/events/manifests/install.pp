@@ -6,8 +6,4 @@
 #
 class events::install {
   include rabbitmq
-
-  package { 'ruby-amqp':
-    ensure => installed,
-  }
 }

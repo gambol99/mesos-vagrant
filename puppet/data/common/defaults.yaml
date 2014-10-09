@@ -7,4 +7,3 @@
 ---
 zookeeper::nodes:
   - mesos-master101
-  - mesos-master102

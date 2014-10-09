@@ -47,4 +47,9 @@ class mesos::master(
     }
   )
   mesos::service { 'master': }
+  ->
+  mesos::service { 'slave':
+    enable  => false,
+    ensure  => stopped,
+  }
 }

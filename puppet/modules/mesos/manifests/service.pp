@@ -5,11 +5,12 @@
 #  vim:ts=2:sw=2:et
 #
 define mesos::service(
+  $ensure = running,
   $enable = true
 ) {
   service { "mesos-${name}":
     enable     => $enable,
-    ensure     => 'running',
+    ensure     => $ensure,
     hasstatus  => true,
     hasrestart => true,
     require    => [

@@ -7,10 +7,23 @@
 ---
 rabbitmq::admin_enable: true
 rabbitmq::default_user: admin
-rabbitmq::default_pass: guest
+rabbitmq::default_pass: admin
+
+events::eventbus::packages:
+  - ruby-mkrf
+  - ruby-eventmachine
+  - ruby1.9.1-dev
+  - ruby-sinatra
+  - thin
+  - g++
 
 events::rabbitmq_users:
+  admin:
+    admin: true
+    password: password
+    tags: [ 'admin']
   events:
     admin: true
     password: events
-    tags: ['eventbus','admin']
+    tags: [ 'admin']
+
