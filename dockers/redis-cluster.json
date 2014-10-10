@@ -1,0 +1,17 @@
+{
+  "id": "/statistics",
+  "groups": [
+    {
+      "id": "/statistics/redis-cluster-master",
+      "apps": [
+         { "id": "/statistics/redis-master", "container": "redis" }
+       ]
+    },{
+      "id": "/statistics/redis-slaves",
+      "dependencies": ["/statistics/redis-cluster-master"],
+      "apps": [
+         { "id": "/statistics/redis-slave", "container": "redis" }
+      ]
+    }
+  ]
+}

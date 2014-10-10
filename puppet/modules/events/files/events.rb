@@ -40,7 +40,8 @@ module Marathon
         @connection = Bunny.new( uri )
         @connection.start
         @channel  = @connection.create_channel
-        @exchange = @channel.topic( topic, :auto_delete => true, :durable => true, :persistent => true )
+        @exchange = @channel.topic( topic )
+        set :statistics, {}
         set :exchange, @exchange
       end
 
@@ -56,13 +57,20 @@ module Marathon
         begin
           # step: we publish the event in the exchange topic, we can use the
           # taskStatus as the routing key
-          if @request_data['taskStatus']
-            exchange.publish @request_data.to_s, :routing_key => @request_data['taskStatus']
+          if @request_data['eventType']
+            task_id = @request_data['eventType'].downcase
+            event = {
+              :task_id => task_id,
+              :event   => @request_data
+            }
+            exchange.publish event.to_json, :routing_key => task_id
+            add_event
             info "event delivered to exchange"
           else
-            warn 'the event does not appear to have a taskStatus associated'
+            warn 'the event does not appear to have a eventType associated'
           end
         rescue Exception => e
+          add_failure
           error "unable to process the event: #{@request_data}, error: #{e.message}"
         end
       end
@@ -74,13 +82,14 @@ module Marathon
 
       private
       def statistics
-        @statistics ||= {}
+        settings.statistics
       end
 
-      %w(event failure buffered).each do |x|
+      %w(add_event add_failure).each do |x|
+        stat_name = $1.to_sym if x[/_(.*)/]
         define_method x.to_sym do
-          statistics[x.to_sym] ||= 0
-          statistics[x.to_sym] += 1
+          statistics[stat_name] ||= 0
+          statistics[stat_name] += 1
         end
       end
 

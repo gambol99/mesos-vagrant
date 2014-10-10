@@ -10,18 +10,12 @@
            "hostPort": 0,
            "protocol": "tcp",
            "servicePort": "8080"
-        },
-        {
-           "containerPort": 161,
-           "hostPort": 0,
-           "protocol": "udp",
-           "servicePort": "161"
         }
       ]
     }
   },
-  "id": "/frontend",
-  "instances": "2",
+  "id": "/frontend/web",
+  "instances": "1",
   "cpus": "0.2",
   "mem": "64",
   "uris": [],

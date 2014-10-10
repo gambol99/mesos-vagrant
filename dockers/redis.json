@@ -1,8 +1,8 @@
 {
-  "id": "redis-stats",
+  "id": "redis",
   "cpus": 0.1,
   "mem": 128.0,
-  "instances": 1,
+  "instances": 0,
   "container": {
     "type": "DOCKER",
     "docker": {
