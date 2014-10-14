@@ -1,0 +1,56 @@
+<%-
+  def settings key
+    @config[key]
+  end
+
+  def peers nodes
+    nodes.reject { |x|
+      x == "#{fqdn_without_id}"
+    }.map { |x|
+      "\"#{x}:7001\""
+    }.join(', ')
+  end
+-%>
+name               = "<%=settings('node_name')%>"
+addr               = "<%=settings('addr')%>"
+bind_addr          = "<%=settings('bind_addr')%>"
+ca_file            = "<%=settings('ca_file',)%>"
+cert_file          = "<%=settings('cert_file')%>"
+<% if settings('cor') and !settings('cor').empty? -%>
+cors               = ["<%=  settings('cor').join('", "') -%>"]
+<% end -%>
+cpu_profile_file   = "<%=settings('cpu_profile_file')%>"
+data_dir           = "<%=settings('data_dir')%>"
+key_file           = "<%=settings('key_file')%>"
+<% if settings('peers') and !settings('peers').empty? and @node_index != '1' -%>
+peers              = [<%=peers settings('peers')%>]
+<% else -%>
+peers              = []
+<%- end -%>
+<% if settings('peers_file') -%>
+peers_file         = "<%=settings('peers_file')%>"
+<% end -%>
+<% if settings('discovery') and !settings('discovery_token').empty? -%>
+discovery          = "<%=settings('discovery_endpoint')%>/<%=settings('discovery_token')%>"
+<% end -%>
+max_cluster_size   = <%=settings('max_cluster_size')%>
+max_result_buffer  = <%=settings('max_result_buffer')%>
+max_retry_attempts = <%=settings('max_retry_attempts')%>
+snapshot           = <%=settings('snapshot')%>
+snapshot-count     = <%=settings('snapshot_count')%>
+verbose            = <%=settings('verbose')%>
+very_verbose       = <%=settings('very_verbose')%>
+
+[peer]
+addr               = "<%=settings('peer_addr')-%>"
+bind_addr          = "<%=settings('peer_bind_addr')-%>"
+ca_file            = "<%=settings('peer_ca_file')-%>"
+cert_file          = "<%=settings('peer_cert_File')-%>"
+key_file           = "<%=settings('peer_key_file')-%>"
+election_timeout   = <%=settings('peer_election_timeout')%>
+heartbeat_interval = <%=settings('peer_heartbeat_interval')%>
+
+[cluster]
+active_size = <%=settings('active_size')%>
+remove_delay = <%=settings('remove_delay')%>
+sync_interval = <%=settings('sync_interval')%>
