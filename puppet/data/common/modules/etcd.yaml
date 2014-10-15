@@ -1,0 +1,41 @@
+#
+#   Author: Rohith (gambol99@gmail.com)
+#   Date: 2014-10-15 17:55:32 +0100 (Wed, 15 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+etcd::config:
+  manage_data_dir: true
+  node_name: "%{::fqdn_without_id}"
+  data_dir: /var/lib/etcd
+  addr: "%{ipaddress}:4001"
+  bind_addr: "%{ipaddress}"
+  peer_addr: "%{::ipaddress}:7001"
+  peer_bind_addr: "%{::ipaddress}:7001"
+  ca_file: ''
+  cert_file: ''
+  key_file: ''
+  cors: []
+  cpu_profile_file:
+  discovery: false
+  discovery_endpoint: https://discovery.etcd.io
+  discovery_token: ''
+  peers: []
+  peers_file: ''
+  peer_ca_file: ''
+  peer_cert_File: ''
+  peer_key_file: ''
+  peer_election_timeout: 500
+  peer_heartbeat_interval: 100
+  verbose: 'false'
+  very_verbose: 'false'
+  snapshot: 'true'
+  snapshot_count: 10000
+  max_cluster_size: 12
+  max_result_buffer: 1024
+  max_retry_attempts: 32
+  active_size: 9
+  remove_delay: 1800.0
+  sync_interval: 5.0
+
