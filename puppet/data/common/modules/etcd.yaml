@@ -7,7 +7,7 @@
 ---
 etcd::config:
   manage_data_dir: true
-  node_name: "%{::fqdn_without_id}"
+  node_name: "%{::hostname}"
   data_dir: /var/lib/etcd
   addr: "%{ipaddress}:4001"
   bind_addr: "%{ipaddress}"

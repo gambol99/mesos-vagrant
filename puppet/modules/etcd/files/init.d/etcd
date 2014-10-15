@@ -20,7 +20,8 @@
 # chkconfig: 2345 20 80
 # description: Starts and stops etcd
 
-. /etc/init.d/functions
+[ -f /etc/init.d/functions ]  && source /etc/init.d/functions
+[ -f /lib/lsb/init-functions] && source /lib/lsb/init-functions
 
 prog="etcd"
 prog_bin="/usr/sbin/$prog"
@@ -31,12 +32,8 @@ if ! [ -f $prog_bin ]; then
   exit 5
 fi
 
-if [ -f /etc/sysconfig/$prog ]; then
-  . /etc/sysconfig/$prog
-else
-  echo "No sysconfig file found in /etc/sysconfig/$prog... exiting."
-  exit 5
-fi
+[ -f /etc/sysconfig/$prog ] && source /etc/sysconfig/$prog
+[ -f /etc/default/$prog ]   && source /etc/default/$prog
 
 start() {
   echo "Starting $desc ($prog): "
@@ -66,7 +63,6 @@ status() {
   else
     echo "$prog is running (pid is $pid)."
   fi
-
 }
 
 case "$1" in

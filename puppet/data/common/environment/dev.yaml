@@ -26,3 +26,11 @@ mesos::master::options:
 
 mesos::slave::options:
   ip: "%{::ipaddress_eth1}"
+
+
+etcd::config:
+  addr: "%{ipaddress_eth1}:4001"
+  bind_addr: "%{ipaddress_eth1}"
+  peer_addr: "%{::ipaddress_eth1}:7001"
+  peer_bind_addr: "%{::ipaddress_eth1}:7001"
+

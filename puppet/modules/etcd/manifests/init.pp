@@ -1,6 +1,5 @@
 class etcd(
-  $version      = 'installed',
-  $package_name = 'etcd',
+  $version      = 'etcd-v0.4.6-linux-amd64',
   $user         = 'etcd',
   $group        = 'etcd'
 ) {

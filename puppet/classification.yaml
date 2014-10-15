@@ -21,6 +21,7 @@ nodes:
     groups:
       - default
     classes:
+      etcd:
       mesos::master:
       events::eventbus:
       marathon:

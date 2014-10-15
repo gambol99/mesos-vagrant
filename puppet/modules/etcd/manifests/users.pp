@@ -14,7 +14,7 @@ class etcd::users {
     ensure    => present,
     allowdupe => false,
     home      => '/etc/etcd',
-    shell     => '/sbin/nologin',
+    shell     => '/bin/bash',
     groups    => $etcd::group,
   }
 }
