@@ -1,24 +1,33 @@
 {
+  "id": "/service/registrar",
+  "instances": "1",
+  "cpus": "0.1",
+  "mem": "64",
+  "uris": [],
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "ubuntu",
-      "network": "CONTAINER:proxy",
-      "portMappings": [
-        { 
-           "containerPort": 8080,
-           "hostPort": 0,
-           "protocol": "tcp",
-           "servicePort": "8080"
+      "image": "hub101:5000/service-registrar",
+      "network": "BRIDGE",
+      "portMappings": [{
+         "containerPort": 22,
+         "hostPort": 0,
+         "protocol": "tcp",
+         "servicePort": "22"
         }
       ]
-    }
+    },
   },
-  "id": "/frontend/web",
-  "instances": "1",
-  "cpus": "0.2",
-  "mem": "64",
-  "uris": [],
-  "cmd": "while sleep 10; do date -u +%T; done"
+  "env": {
+    "APP": "registrar",
+    "NAME": "registrar",
+    "ENVIRONMENT": "prod",
+    "ETCD_HOST": "10.0.1.100"
+  },
+  "volumes": [{
+    "containerPath": "/var/run/docker.sock",
+    "hostPath": "/var/run/docker.sock",
+    "mode": "RW"
+  }]
 }
 

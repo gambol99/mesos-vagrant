@@ -7,6 +7,14 @@
 docker::version: 1.0.1~dfsg1-0ubuntu1~ubuntu0.14.04.1
 docker::package_name: docker.io
 docker::service_name: docker.io
+
+docker::registry::package_deps:
+  - build-essential
+  - python-dev
+  - libevent-dev
+  - python-pip
+  - liblzma-dev
+
 events::events_packages:
   - 'ruby-amqp'
 resolv::resolver: /etc/resolvconf/resolv.conf.d/base

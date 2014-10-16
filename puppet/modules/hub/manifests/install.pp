@@ -7,6 +7,7 @@
 class hub::install {
   include jenkins
   include docker
+  include docker::registry
 
   ensure_packages(['git'])
 }

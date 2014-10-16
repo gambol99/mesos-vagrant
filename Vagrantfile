@@ -55,7 +55,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         x.vm.network n['name'], ip: n['ip'] if n['ip']
       end
       x.vm.provider :virtualbox do |v|
-        v.gui   = settings['gui'] || true
+        v.gui   = settings['gui'] || false
         v.name  = settings['hostname']
         (settings['spec'] || {}).each_pair do |key,value|
           v.customize [ "modifyvm", :id, "--#{key}", value ]
