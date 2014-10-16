@@ -5,5 +5,8 @@
 #  vim:ts=2:sw=2:et
 #
 class docker::config {
-
+  etc::sysconfig { 'docker.io':
+    content  => template("${module_name}/sysconfig/docker.erb"),
+    notified => Service['docker'],
+  }
 }

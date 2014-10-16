@@ -1,0 +1,9 @@
+#
+#   Author: Rohith
+#   Date: 2014-10-16 21:25:25 +0100 (Thu, 16 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+docker::options:
+  - -H tcp://127.0.0.1:2375
+  - -H unix:///var/run/docker.sock

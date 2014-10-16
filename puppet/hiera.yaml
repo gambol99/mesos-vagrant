@@ -12,6 +12,7 @@
   - "common/environment/%{environment}"
   - "common/modules/%{module_name}"
   - "common/os/%{::operatingsystem}"
+  - "common/roles/%{role}"
   - "common/defaults"
 :yaml:
   :datadir: /etc/puppet/hieradata

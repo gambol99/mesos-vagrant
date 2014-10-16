@@ -9,10 +9,15 @@ class docker(
   $package_name = 'docker-io',
   $service_name = 'docker',
 ) {
-  class { 'install': }
+  $options = hiera_array('docker::options',[])
+
+  class { 'install':  }
   ->
-  class { 'config':  }
+  class { 'config':   }
+  ->
+  class { 'services': }
 
   contain docker::install
   contain docker::config
+  contain docker::services
 }

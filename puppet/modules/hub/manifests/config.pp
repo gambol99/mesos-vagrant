@@ -6,14 +6,6 @@
 #
 class hub::config {
   jenkins::plugin {
-    [ 'github' ]:
-  }
-  ->
-  jenkins::plugin {
-    [ 'token-macro', 'durable-task', 'ssh-slaves' ]:
-  }
-  ->
-  jenkins::plugin {
-    [ 'docker-build-step', 'docker-build-publish' ]:
+    $hub::jenkins_plugins:
   }
 }

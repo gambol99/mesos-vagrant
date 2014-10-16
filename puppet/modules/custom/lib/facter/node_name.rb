@@ -4,7 +4,6 @@
 #
 #  vim:ts=4:sw=4:et
 #
-
 require 'facter'
 
 def add_fact( name, value )

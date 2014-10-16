@@ -1,0 +1,25 @@
+#
+#   Author: Rohith
+#   Date: 2014-10-16 21:08:27 +0100 (Thu, 16 Oct 2014)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+docker::options:
+  - -H 127.0.0.1:4243
+hub::jenskins::plugins:
+  - credentials
+  - docker-build-publish
+  - docker-build-step
+  - durable-task
+  - git
+  - git-client
+  - github
+  - github-api
+  - multiple-scms
+  - scm-api
+  - ssh-agent
+  - ssh-credentials
+  - ssh-slaves
+  - token-macro
+  - greenballs

@@ -3,7 +3,7 @@
     "type": "DOCKER",
     "docker": {
       "image": "ubuntu",
-      "network": "BRIDGE",
+      "network": "CONTAINER:proxy",
       "portMappings": [
         { 
            "containerPort": 8080,

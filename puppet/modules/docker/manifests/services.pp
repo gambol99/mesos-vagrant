@@ -5,5 +5,7 @@
 #  vim:ts=2:sw=2:et
 #
 class docker::services {
-  service { $docker::service_name: }
+  service { 'docker':
+    name => $docker::service_name,
+  }
 }
