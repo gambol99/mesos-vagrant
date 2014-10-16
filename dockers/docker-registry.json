@@ -9,9 +9,14 @@
       ]
     }
   },
+  "env": {
+    "APP": "docker-register",
+    "ENVIRONMENT": "prod",
+    "NAME": "register"
+  },
   "id": "docker-registry",
   "instances": "1",
-  "cpus": "0.03",
-  "mem": "128"
+  "cpus": "0.1",
+  "mem": "64"
 }
 
