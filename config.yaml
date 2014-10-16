@@ -67,4 +67,11 @@ boxes:
       ip: 10.0.1.111
     spec:
       <<: *default_specs
+  - <<: *defaults
+    hostname: hub101
+    networks:
+    - name: private_network
+      ip: 10.0.1.112
+    spec:
+      <<: *default_specs
 

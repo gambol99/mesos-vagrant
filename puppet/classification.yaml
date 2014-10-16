@@ -32,6 +32,13 @@ nodes:
       environment: dev
     classes:
       mesos::slave:
+  'hub[0-9]{1,3}':
+    groups:
+      - default
+    parameter:
+      environment: dev
+    classes:
+      docker::hub:
   'events[0-9]{1,3}':
     groups:
       - default

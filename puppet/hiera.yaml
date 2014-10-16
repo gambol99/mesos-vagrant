@@ -14,4 +14,4 @@
   - "common/os/%{::operatingsystem}"
   - "common/defaults"
 :yaml:
-  :datadir: /etc/puppet/data
+  :datadir: /etc/puppet/hieradata

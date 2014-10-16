@@ -10,3 +10,12 @@
 [submodule "puppet/modules/staging"]
 	path = puppet/modules/staging
 	url = https://github.com/nanliu/puppet-staging.git
+[submodule "puppet/modules/jenkins"]
+	path = puppet/modules/jenkins
+	url = https://github.com/jenkinsci/puppet-jenkins.git
+[submodule "puppet/modules/java"]
+	path = puppet/modules/java
+	url = https://github.com/puppetlabs/puppetlabs-java.git
+[submodule "puppet/modules/zypprepo"]
+	path = puppet/modules/zypprepo
+	url = https://github.com/deadpoint/puppet-zypprepo.git
