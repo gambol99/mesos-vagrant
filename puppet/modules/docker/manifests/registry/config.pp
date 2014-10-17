@@ -22,5 +22,17 @@ class docker::registry::config {
     $docker::registry::storage_path:
       ensure  => directory,
       mode    => '0770';
+
+    [ '/var/log/docker-registry', '/var/run/docker-registry' ]:
+      ensure  => directory,
+      mode    => '0770';
+  }
+
+  etc::initd { 'docker-registry':
+    source  => "puppet:///modules/${module_name}/init.d/docker-registry",
+  }
+
+  etc::sysconfig { 'docker-registry':
+    content => template("${module_name}/registry/docker-registry.erb"),
   }
 }

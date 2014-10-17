@@ -9,7 +9,9 @@ class docker::registry(
   $storage_path   = '/var/docckers',
   $package_deps = []
 ) {
-  class { 'install': }
+  class { 'install':  }
   ->
-  class { 'config':  }
+  class { 'config':   }
+  ->
+  class { 'services': }
 }
