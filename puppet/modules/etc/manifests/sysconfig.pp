@@ -5,10 +5,10 @@
 #  vim:ts=2:sw=2:et
 #
 define etc::sysconfig(
-  $ensure        = 'present',
-  $content       = undef,
-  $source        = undef,
-  $notified      = undef,
+  $ensure   = 'present',
+  $content  = undef,
+  $source   = undef,
+  $notified = undef,
 ) {
 
   $sysconfig_dir      = hiera('sysconfig::directory','/etc/sysconfig')

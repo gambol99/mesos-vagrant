@@ -37,6 +37,10 @@ class etcd::config {
       require => Class['etcd::users'];
   }
 
+  etc::initd { 'etcd':
+    source  => "puppet:///modules/${module_name}/init.d/etcd",
+  }
+
   etc::sysconfig { 'etcd':
     content => template("${module_name}/sysconfig/etcd.erb");
   }
