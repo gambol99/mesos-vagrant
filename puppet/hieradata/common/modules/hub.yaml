@@ -27,3 +27,19 @@ hub::jenskins::plugins:
   - ssh-credentials
   - ssh-slaves
   - token-macro
+
+
+hub::dockers:
+  'redis':
+    repository: https://github.com/docker-library/redis
+    dockerfile: 2.8.17/
+    docker_tag: 2.8.17
+  'service-registrar':
+    repository: https://github.com/gambol99/service-registrar
+  'ubuntu-sshd':
+    repository: https://github.com/rastasheep/ubuntu-sshd
+    dockerfile: 14.04/
+  'base-image':
+    repository: https://github.com/gambol99/mesos-vagrant
+    dockerfile: Dockerfiles/base
+
