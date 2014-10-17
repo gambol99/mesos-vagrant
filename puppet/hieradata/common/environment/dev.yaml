@@ -23,6 +23,9 @@ etc::hosts::entries:
   hub101.%{::domain}:
     ip: 10.0.1.112
     host_aliases: 'hub101'
+  hub.%{::domain}:
+    ip: 10.0.1.112
+    host_aliases: 'hub'
 
 mesos::master::options:
   ip: "%{::ipaddress_eth1}"
