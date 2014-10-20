@@ -1,9 +1,9 @@
 {
-  "id": "ubuntu",
+  "id": "ubuntu1",
   "cpus": 0.1,
   "mem": 128.0,
   "instances": 1,
-  "args": ["/bin/sh", "-c", "env && sleep 300"],
+  "args": ["/bin/bash", "-c", "source /etc/environment; ls /etc; cat /etc/environment; env && sleep 300"],
   "container": {
     "type": "DOCKER",
     "docker": {
@@ -12,12 +12,18 @@
       "portMappings": [
         { "containerPort": 6379, "hostPort": 0, "protocol": "tcp"}
       ]
-    }
+    },
+    "volumes": [
+      {
+        "hostPath": "/etc/environment",
+        "containerPath": "/etc/environment",
+        "mode": "RO"
+      }
+    ]
   },
   "env": {
     "APP": "ubuntu",
     "NAME": "ubuntu",
-    "HOSTNAME": "$HOSTNAME",
     "ENVIRONMENT": "prod"
   }
 }

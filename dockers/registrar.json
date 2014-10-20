@@ -17,17 +17,23 @@
         }
       ]
     },
-    "volumes": [{
-      "hostPath": "/var/run",
-      "containerPath": "/var/sockets",
-      "mode": "RW"
-    }]
+    "volumes": [
+      {
+        "hostPath": "/var/run",
+        "containerPath": "/var/sockets",
+        "mode": "RW"
+      },
+      {
+        "hostPath": "/etc/environment",
+        "containerPath": "/etc/environment",
+        "mode": "RO"
+      }
+    ]
   },
   "env": {
     "APP": "registrar",
     "NAME": "registrar",
     "ENVIRONMENT": "prod",
-    "HOSTNAME": "$HOST",
     "ETCD_HOST": "10.0.1.100",
     "ETCD_PORT": "4001",
     "DOCKER_SOCKET": "/var/sockets/docker.sock"
