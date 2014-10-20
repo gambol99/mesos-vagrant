@@ -23,26 +23,19 @@ nodes:
     classes:
       etcd:
       mesos::master:
-      events::eventbus:
       marathon:
   'mesos-slave[0-9]{1,3}':
     groups:
       - default
-    parameter:
-      environment: dev
     classes:
       mesos::slave:
   'hub[0-9]{1,3}':
     groups:
       - default
-    parameter:
-      environment: dev
     classes:
       hub:
   'events[0-9]{1,3}':
     groups:
       - default
-    parameter:
-      environment: dev
     classes:
       events:

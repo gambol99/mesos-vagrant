@@ -1,3 +1,18 @@
+mesos::master_options:
+  ip: "%{::ipaddress_eth1}"
+
+mesos::slave_options:
+  ip: "%{::ipaddress_eth1}"
+
+mesos::environment:
+  private_ip: "%{::ipaddress_eth1}"
+
+etcd::config:
+  addr: "%{ipaddress_eth1}:4001"
+  bind_addr: "%{ipaddress_eth1}"
+  peer_addr: "%{::ipaddress_eth1}:7001"
+  peer_bind_addr: "%{::ipaddress_eth1}:7001"
+
 etc::hosts::entries:
   mesos-master101.%{::domain}:
     ip: 10.0.1.100
@@ -26,17 +41,3 @@ etc::hosts::entries:
   hub.%{::domain}:
     ip: 10.0.1.112
     host_aliases: 'hub'
-
-mesos::master::options:
-  ip: "%{::ipaddress_eth1}"
-
-mesos::slave::options:
-  ip: "%{::ipaddress_eth1}"
-
-
-etcd::config:
-  addr: "%{ipaddress_eth1}:4001"
-  bind_addr: "%{ipaddress_eth1}"
-  peer_addr: "%{::ipaddress_eth1}:7001"
-  peer_bind_addr: "%{::ipaddress_eth1}:7001"
-

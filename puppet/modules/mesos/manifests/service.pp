@@ -8,6 +8,7 @@ define mesos::service(
   $ensure = running,
   $enable = true
 ) {
+
   service { "mesos-${name}":
     enable     => $enable,
     ensure     => $ensure,
@@ -16,6 +17,7 @@ define mesos::service(
     require    => [
                     Class['mesos::install'],
                     Class['mesos::config'],
+                    Class['etc::hosts'],
                   ]
   }
 }

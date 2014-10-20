@@ -6,10 +6,11 @@
 #
 ---
 :logger: puppet
+:merge_behavior: deeper
 :backends:
   - yaml
 :hierarchy:
-  - "common/environment/%{environment}"
+  - "common/environment/%{::environment}"
   - "common/modules/%{module_name}"
   - "common/os/%{::operatingsystem}"
   - "common/roles/%{role}"

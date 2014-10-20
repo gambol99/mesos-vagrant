@@ -13,8 +13,8 @@ class mesos::slave(
   include docker
   include zookeeper::disabled
 
-  $options = hiera_hash('mesos::slave::options',{})
-  $removal = hiera_hash('mesos::slave::options_removal',{})
+  $options = hiera_hash('mesos::slave_options',{})
+  $removal = hiera_hash('mesos::slave_options_removal',{})
 
   file {
     $config_dir:

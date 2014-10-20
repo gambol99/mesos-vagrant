@@ -5,7 +5,11 @@
 #  vim:ts=2:sw=2:et
 #
 ---
-mesos::common::options:
+mesos::environment:
+  private_ip: "%{::ipaddress}"
+  hostname: "%{::hostname}"
+
+mesos::common_options:
   log_dir: /var/log/mesos
   use_syslog: 'true'
   ulimit: 8192
@@ -15,14 +19,13 @@ mesos::common::options:
   env_var: {}
   masters:
     - mesos-master101
-  #  - mesos-master102
   slaves:
     - mesos-slave101
     - mesos-slave102
     - mesos-slave103
 
 # ---- Mesos Slave Options -----
-mesos::slave::options:
+mesos::slave_options:
   containerizers: 'docker,mesos'
   executor_registration_timeout: '5mins'
   logging_level: INFO
@@ -31,11 +34,7 @@ mesos::slave::options:
     type: resource
 
 # ---- Mesos Master Options -----
-mesos::master::options:
+mesos::master_options:
   cluster: mesos
   quorum: 1
   logging_level: INFO
-mesos::master::options_removal:
-  slave_reregister_timeout: true
-
-# -------------------------------

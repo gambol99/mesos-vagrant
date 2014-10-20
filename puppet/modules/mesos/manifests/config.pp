@@ -6,15 +6,19 @@
 #
 class mesos::config {
   file {
+    '/etc/environment':
+      mode    => '0444',
+      content => template("${module_name}/environment.erb");
+
     '/etc/mesos':
-      ensure => directory,
-      owner  => $mesos::common::owner,
-      group  => $mesos::common::group;
+      ensure  => directory,
+      owner   => $mesos::common::owner,
+      group   => $mesos::common::group;
 
     '/var/log/mesos':
-      ensure => directory,
-      owner  => $mesos::common::owner,
-      group  => $mesos::common::group;
+      ensure  => directory,
+      owner   => $mesos::common::owner,
+      group   => $mesos::common::group;
   }
 
   etc::sysconfig { 'default':

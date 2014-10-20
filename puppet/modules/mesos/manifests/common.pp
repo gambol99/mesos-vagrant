@@ -11,7 +11,8 @@ class mesos::common(
   require repos
   require etc::hosts
 
-  $common_options = hiera_hash('mesos::common::options',{})
+  $environment    = hiera_hash('mesos::environment',{})
+  $common_options = hiera_hash('mesos::common_options',{})
 
   class { 'install': }
   ->

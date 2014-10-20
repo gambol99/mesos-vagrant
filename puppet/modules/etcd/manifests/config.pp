@@ -19,10 +19,6 @@ class etcd::config {
                    Class['etcd::users'],
                  ];
 
-    '/etc/init.d/etcd':
-      mode    => '0755',
-      source  => "puppet:///modules/${module_name}/init.d/etcd";
-
     $etcd::config['data_dir']:
       ensure  => directory,
       owner   => $etcd::user,

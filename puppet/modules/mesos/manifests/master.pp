@@ -9,11 +9,10 @@ class mesos::master(
   $config_dir   = '/etc/mesos-master',
   $working_dir  = '/var/lib/mesos',
 ) inherits mesos::common {
-
   include zookeeper
 
-  $options = hiera_hash('mesos::master::options',{})
-  $removal = hiera_hash('mesos::master::options_removal',{})
+  $master_options = hiera_hash('mesos::master_options')
+  $master_removal = hiera_hash('mesos::master_options_removal',{})
 
   file {
     $config_dir:
@@ -33,19 +32,17 @@ class mesos::master(
   mesos::config::master { 'work_dir':
     value => $working_dir,
   }
-
-  create_resources( 'mesos::config::option', mesos_property( $options ), {
+  create_resources( 'mesos::config::option', mesos_property( $master_options ), {
       type     => 'master',
       notified => Service['mesos-master']
     }
   )
-
-  create_resources( 'mesos::config::option', mesos_property( $removal ), {
-      ensure   => absent,
-      type     => 'master',
-      notified => Service['mesos-master'],
-    }
-  )
+  #create_resources( 'mesos::config::option', mesos_property( $removal ), {
+  #    ensure   => absent,
+  #    type     => 'master',
+  #    notified => Service['mesos-master'],
+  #  }
+  #)
   mesos::service { 'master': }
   ->
   mesos::service { 'slave':
