@@ -1,0 +1,36 @@
+{
+  "id": "/service/registrar",
+  "instances": "1",
+  "cpus": "0.1",
+  "mem": "64",
+  "uris": [],
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "hub:5000/service-registrar",
+      "network": "BRIDGE",
+      "portMappings": [{
+         "containerPort": "22",
+         "hostPort": "0",
+         "protocol": "tcp",
+         "servicePort": "22"
+        }
+      ]
+    },
+    "volumes": [{
+      "hostPath": "/var/run",
+      "containerPath": "/var/sockets",
+      "mode": "RW"
+    }]
+  },
+  "env": {
+    "APP": "registrar",
+    "NAME": "registrar",
+    "ENVIRONMENT": "prod",
+    "HOSTNAME": "$HOST",
+    "ETCD_HOST": "10.0.1.100",
+    "ETCD_PORT": "4001",
+    "DOCKER_SOCKET": "/var/sockets/docker.sock"
+  },
+  "constraints": [["hostname", "UNIQUE"]]
+}

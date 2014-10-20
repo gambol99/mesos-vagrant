@@ -2,15 +2,20 @@
   "id": "redis",
   "cpus": 0.1,
   "mem": 128.0,
-  "instances": 0,
+  "instances": 1,
   "container": {
     "type": "DOCKER",
     "docker": {
       "image": "redis",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 6379, "hostPort": 6379, "protocol": "tcp"}
+        { "containerPort": 6379, "hostPort": 0, "protocol": "tcp"}
       ]
     }
+  },
+  "env": {
+    "APP": "redis",
+    "NAME": "redis-slaves",
+    "ENVIRONMENT": "prod"
   }
 }

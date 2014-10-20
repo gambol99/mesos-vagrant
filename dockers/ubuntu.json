@@ -1,12 +1,13 @@
 {
-  "id": "redis-master",
-  "cpus": 0.2,
-  "mem": 256.0,
+  "id": "ubuntu",
+  "cpus": 0.1,
+  "mem": 128.0,
   "instances": 1,
+  "args": ["/bin/sh", "-c", "env && sleep 300"],
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "redis",
+      "image": "ubuntu",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 6379, "hostPort": 0, "protocol": "tcp"}
@@ -14,10 +15,9 @@
     }
   },
   "env": {
-    "APP": "redis",
-    "NAME": "redis-master",
-    "TAGS": "statistics,redis",
+    "APP": "ubuntu",
+    "NAME": "ubuntu",
+    "HOSTNAME": "$HOSTNAME",
     "ENVIRONMENT": "prod"
   }
 }
-
