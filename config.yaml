@@ -74,4 +74,5 @@ boxes:
       ip: 10.0.1.112
     spec:
       <<: *default_specs
+      memory: 2048
 

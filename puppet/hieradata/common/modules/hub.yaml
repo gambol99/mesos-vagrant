@@ -42,4 +42,10 @@ hub::dockers:
   'base-image':
     repository: https://github.com/gambol99/mesos-vagrant
     dockerfile: Dockerfiles/base
+  'elasticseach':
+    repository: https://github.com/dockerfile/elasticsearch
+  'dockerfile-java':
+    repository: https://github.com/dockerfile/java
+    dockerfile: oracle-java8/
+
 
