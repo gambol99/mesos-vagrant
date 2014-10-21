@@ -38,9 +38,6 @@ hub::dockers:
   'ubuntu-sshd':
     repository: https://github.com/rastasheep/ubuntu-sshd
     dockerfile: 14.04/
-  'base-image':
-    repository: https://github.com/gambol99/mesos-vagrant
-    dockerfile: Dockerfiles/base
   'elasticseach':
     repository: https://github.com/dockerfile/elasticsearch
   'dockerfile-java':
