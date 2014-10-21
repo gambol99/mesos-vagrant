@@ -7,27 +7,26 @@
 ---
 docker::options:
   - -H 127.0.0.1:4243
-hub::jenskins::plugins:
-  - conditional-buildstep
-  - credentials
-  - docker-build-publish
-  - docker-build-step
-  - durable-task
-  - git
-  - git-client
-  - github
-  - github-api
-  - greenballs
-  - maven-plugin
-  - multiple-scms
-  - parameterized-trigger
-  - run-condition
-  - scm-api
-  - ssh-agent
-  - ssh-credentials
-  - ssh-slaves
-  - token-macro
 
+hub::jenkins_plugins:
+  conditional-buildstep: {}
+  credentials: {}
+  docker-build-publish: {}
+  durable-task:  {}
+  git: {}
+  git-client: {}
+  github: {}
+  github-api: {}
+  greenballs: {}
+  maven-plugin: {}
+  multiple-scms: {}
+  parameterized-trigger: {}
+  run-condition: {}
+  scm-api: {}
+  ssh-agent: {}
+  ssh-credentials: {}
+  ssh-slaves: {}
+  token-macro: {}
 
 hub::dockers:
   'redis':
@@ -47,5 +46,8 @@ hub::dockers:
   'dockerfile-java':
     repository: https://github.com/dockerfile/java
     dockerfile: oracle-java8/
+  'komljen-apache':
+    repository: https://github.com/komljen/dockerfile-examples
+    dockerfile: apache/
 
 

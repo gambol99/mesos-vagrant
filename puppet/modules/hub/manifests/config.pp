@@ -5,18 +5,22 @@
 #  vim:ts=2:sw=2:et
 #
 class hub::config {
-  $docker_builds = hiera_hash('hub::dockers',{})
-
-  jenkins::plugin {
-    $hub::jenkins_plugins:
-  }
-  ->
   jenkins::job::present { 'docker-publish':
     config  => template("${module_name}/jenkins/jobs/docker-publish.xml.erb"),
     jobname => 'docker-publish',
   }
 
-  create_resources( 'hub::docker::build', $docker_builds, {
+  jenkins::plugin { 'docker-build-step':
+    manage_config   => true,
+    config_filename => 'org.jenkinsci.plugins.dockerbuildstep.DockerBuilder.xml',
+    config_content  => template("${module_name}/jenkins/plugins/DockerBuilder.xml.erb"),
+  }
+
+  create_resources( 'jenkins::plugin', $hub::jenkins_plugins, {
+    manage_config => false
+  } )
+
+  create_resources( 'hub::docker::build', $hub::docker_builds, {
     user       => 'gambol99',
     docker_tag => 'latest',
   })

@@ -5,7 +5,8 @@
 #  vim:ts=2:sw=2:et
 #
 class hub() {
-  $jenkins_plugins = hiera_array('hub::jenskins::plugins',[])
+  $jenkins_plugins = hiera_hash('hub::jenkins_plugins',{})
+  $docker_builds   = hiera_hash('hub::dockers',{})
 
   class { 'install': }
   ->
