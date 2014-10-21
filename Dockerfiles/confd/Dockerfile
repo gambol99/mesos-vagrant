@@ -11,6 +11,7 @@ RUN sudo apt-get install -y wget
 RUN sudo wget http://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -O /usr/bin/confd && chmod +x /usr/bin/confd
 RUN sudo mkdir -p /etc/confd/conf.d /etc/confd/templates
 RUN sudo apt-get install -y vim
+ADD config/confd.conf /etc/confd/confd.conf
 ENV ENVIRONMENT dev
 ENV APP confd
 ENV NAME confd
