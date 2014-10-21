@@ -9,7 +9,7 @@ MAINTAINER <gambol99@gmail.com>
 RUN sudo apt-get update
 RUN sudo apt-get install -y wget
 RUN sudo wget http://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -O /usr/bin/confd && chmod +x /usr/bin/confd
-RUN sudo mkdir -p /etc/confd/confd.d /etc/confd/templates
+RUN sudo mkdir -p /etc/confd/conf.d /etc/confd/templates
 RUN sudo apt-get install -y vim
 ENV ENVIRONMENT dev
 ENV APP confd
