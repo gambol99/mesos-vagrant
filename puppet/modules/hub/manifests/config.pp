@@ -5,6 +5,10 @@
 #  vim:ts=2:sw=2:et
 #
 class hub::config {
+  user { 'jenkins':
+    groups  => [ 'docker', 'jenkins'],
+  }
+
   jenkins::job::present { 'docker-publish':
     config  => template("${module_name}/jenkins/jobs/docker-publish.xml.erb"),
     jobname => 'docker-publish',
