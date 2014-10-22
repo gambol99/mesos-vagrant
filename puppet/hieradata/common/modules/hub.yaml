@@ -29,6 +29,9 @@ hub::jenkins_plugins:
   token-macro: {}
 
 hub::dockers:
+  'base':
+    repository: https://github.com/gambol99/mesos-vagrant
+    dockerfile: Dockerfiles/base
   'dockers-library_redis-2.8.17':
     docker_name: redis
     repository: https://github.com/docker-library/redis
