@@ -21,7 +21,7 @@ define etc::profiled (
   } elsif $source {
     File[$configuration_file] { source => $source }
   } else {
-    File[$configuration_file] { content => template("${caller_module_name}/sysconfig/${name}.erb") }
+    File[$configuration_file] { content => template("${caller_module_name}/profile.d/${name}.erb") }
   }
 }
 

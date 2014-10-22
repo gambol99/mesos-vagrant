@@ -9,4 +9,7 @@ class docker::config {
     content  => template("${module_name}/sysconfig/docker.erb"),
     notified => Service['docker'],
   }
+  etc::profiled { 'docker':
+    source => "puppet:///modules/${module_name}/profile.d/docker.sh",
+  }
 }
