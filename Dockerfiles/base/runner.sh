@@ -31,9 +31,8 @@ update_confd_backend() {
 
 update_confd_onetime() {
 
-
-
-
+  if ! $CONFD -config-file=$CONFD_CONFIG_FILE -onetime -debug; then
+    annonce "failed to "
 }
 
 startup() {

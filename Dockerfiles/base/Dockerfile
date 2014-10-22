@@ -6,12 +6,21 @@
 #
 FROM ubuntu
 MAINTAINER <gambol99@gmail.com>
-RUN apt-get update
-RUN apt-get install -y openssh-server wget vim supervisord
-RUN mkdir -p /etc/confd/conf.d /etc/confd/templates
-ADD config/confd.conf /etc/confd/confd.conf
-RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -O /usr/bin/confd && chmod +x /usr/bin/confd
+
 ENV APP base
 ENV NAME base
-ENV ENVIRONMENT dev
-EXPOSE 22
+ENV ENVIRONMENT prod
+
+RUN apt-get update
+RUN apt-get install -y curl wget vim supervisor
+RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.6.3/confd-0.6.3-linux-amd64 -O /usr/bin/confd && chmod +x /usr/bin/confd
+RUN mkdir -p \
+  /dockerbase \
+  /etc/confd/conf.d \
+  /etc/confd/templates \
+  /etc/supervisor/conf.d
+RUN rm -f /etc/cron.daily/standard
+ADD cleanup.sh dockerbase/cleanup.sh
+ADD config/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+ADD config/confd/confd.conf /etc/confd/confd.conf
+RUN bash /dockerbase/cleanup.sh
