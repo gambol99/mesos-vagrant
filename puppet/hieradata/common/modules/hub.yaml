@@ -29,10 +29,19 @@ hub::jenkins_plugins:
   token-macro: {}
 
 hub::dockers:
-  'redis':
+  'dockers-library_redis-2.8.17':
+    docker_name: redis
     repository: https://github.com/docker-library/redis
     dockerfile: 2.8.17/
     docker_tag: 2.8.17
+  'dockers-library_redis-2.8.16':
+    docker_name: redis
+    repository: https://github.com/docker-library/redis
+    dockerfile: 2.8.16/
+    docker_tag: 2.8.16
+  'dockers-library_rails':
+    docker_name: rails
+    repository: https://github.com/docker-library/rails
   'service-registrar':
     repository: https://github.com/gambol99/service-registrar
   'ubuntu-sshd':
@@ -43,11 +52,17 @@ hub::dockers:
     dockerfile: Dockerfiles/confd
   'elasticseach':
     repository: https://github.com/dockerfile/elasticsearch
-  'dockerfile-java':
+  'dockerfile-java-oracle7':
+    docker_name: java
+    repository: https://github.com/dockerfile/java
+    dockerfile: oracle-java7/
+    docker_tag: oracle7
+  'dockerfile-java-oracle8':
+    docker_name: java
     repository: https://github.com/dockerfile/java
     dockerfile: oracle-java8/
+    docker_tag: oracle8
   'komljen-apache':
     repository: https://github.com/komljen/dockerfile-examples
     dockerfile: apache/
-
 

@@ -48,7 +48,7 @@
     <org.jenkinsci.plugins.dockerbuildstep.DockerBuilder plugin="docker-build-step@1.11">
       <dockerCmd class="org.jenkinsci.plugins.dockerbuildstep.cmd.CreateImageCommand">
         <dockerFolder>$WORKSPACE/<%=@dockerfile%></dockerFolder>
-        <imageTag><%=docker_user%>$JOB_NAME:<%=docker_tag%></imageTag>
+        <imageTag><%=docker_user%><%=@docker_image_name%>:<%=docker_tag%></imageTag>
       </dockerCmd>
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
   </builders>
@@ -58,7 +58,7 @@
         <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
           <configs>
             <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
-              <properties>DOCKER_IMAGE=<%=docker_user%>$JOB_NAME:<%=docker_tag%></properties>
+              <properties>DOCKER_IMAGE=<%=docker_user%><%=@docker_image_name%>:<%=docker_tag%></properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
           <projects>docker-publish</projects>

@@ -10,6 +10,7 @@ class docker::registry::config {
       ensure  => directory,
       mode    => '0550';
 
+    # @TODO: this is done hard and fast ... the hardcoding isn't great
     '/etc/registry/config.yml':
       ensure  => 'link',
       target  => '/usr/local/lib/python2.7/dist-packages/config/config.yml',
