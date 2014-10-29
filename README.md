@@ -28,10 +28,10 @@ Setup
 -------------
 
 The bin/cfg command can be used to generate the rendered file;
-
-  [jest@starfury mesos-vagrant]$ vagrant up mesos-master101
-  [jest@starfury mesos-vagrant]$ vagrant up mesos-slave10[12]
-  [jest@starfury mesos-vagrant]$ vagrant up hub101
+  
+    [jest@starfury mesos-vagrant]$ vagrant up mesos-master101
+    [jest@starfury mesos-vagrant]$ vagrant up mesos-slave10[12]
+    [jest@starfury mesos-vagrant]$ vagrant up hub101
 
 Docker Registry
 -------------------
