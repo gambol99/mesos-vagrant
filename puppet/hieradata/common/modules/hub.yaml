@@ -42,6 +42,9 @@ hub::dockers:
     repository: https://github.com/docker-library/redis
     dockerfile: 2.8.16/
     docker_tag: 2.8.16
+  'progrium-registrator':
+    docker_name: registrator
+    repository: https://github.com/progrium/registrator
   'dockers-library_rails':
     docker_name: rails
     repository: https://github.com/docker-library/rails
@@ -50,6 +53,8 @@ hub::dockers:
   'ubuntu-sshd':
     repository: https://github.com/rastasheep/ubuntu-sshd
     dockerfile: 14.04/
+  'hipache':
+    repository: https://github.com/hipache/hipache
   'confd':
     repository: https://github.com/gambol99/mesos-vagrant
     dockerfile: Dockerfiles/confd
