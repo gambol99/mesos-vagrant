@@ -1,0 +1,7 @@
+{
+  "id": "redis-slaves",
+  "container": {
+    "docker": "docker://hub:5000/redis",
+    "options": [ "-e", "ENVIRONMENT=prod", "-e", "NAME=stats", "-e", "APP=REDIS" ]
+  }
+}

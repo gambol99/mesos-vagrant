@@ -16,7 +16,7 @@
   "env": {
     "APP": "redis",
     "NAME": "redis-master",
-    "TAGS": "statistics,redis",
+    "TAGS": "statistics,redis,master",
     "ENVIRONMENT": "prod"
   }
 }

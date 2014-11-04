@@ -1,0 +1,23 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "hub:5000/komljen-apache",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 80, "hostPort": 0, "protocol": "tcp"}
+      ]
+    }
+  },
+  "args": [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ],
+  "env": {
+    "APP": "apache",
+    "ENVIRONMENT": "prod",
+    "NAME": "frontend"
+  },
+  "id": "apache",
+  "instances": "2",
+  "cpus": "0.1",
+  "mem": "64"
+}
+

@@ -16,6 +16,7 @@
   "env": {
     "APP": "redis",
     "NAME": "redis-slaves",
-    "ENVIRONMENT": "prod"
+    "ENVIRONMENT": "prod",
+    "LINK": "key:redis-master/,tags:master,port:localhost:6379"
   }
 }
