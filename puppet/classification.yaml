@@ -9,7 +9,7 @@ groups:
   default:
     parameters:
       application: mesos
-      environment: dev
+      environment: hq
     classes:
       resolv:
       bash:
@@ -20,7 +20,8 @@ nodes:
   'docker[0-9]{1,3}':
     groups:
       - default
-    classes: {}
+    classes:
+      docker:
   'mesos-master[0-9]{1,3}':
     groups:
       - default
