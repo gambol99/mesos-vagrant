@@ -17,6 +17,10 @@ groups:
       repos:
 
 nodes:
+  'docker[0-9]{1,3}':
+    groups:
+      - default
+    classes: {}
   'mesos-master[0-9]{1,3}':
     groups:
       - default
