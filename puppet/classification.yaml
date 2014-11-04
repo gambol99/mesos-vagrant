@@ -17,9 +17,17 @@ groups:
       repos:
 
 nodes:
+  'base':
+    groups:
+      - default
+    parameters:
+      environment: prod
+    classes: {}
   'docker[0-9]{1,3}':
     groups:
       - default
+    parameters:
+      environment: prod
     classes:
       docker:
   'mesos-master[0-9]{1,3}':
