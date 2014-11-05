@@ -6,4 +6,4 @@
 #
 docker::version: installed
 docker::package_name: docker
-docker::service_name: dockerd
+docker::service_name: docker
