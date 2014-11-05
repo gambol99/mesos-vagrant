@@ -57,6 +57,10 @@ Group {
   allowdupe => false
 }
 
+Package {
+  allow_virtual => false
+}
+
 $server = "puppet"
 
 case $::architecture {
