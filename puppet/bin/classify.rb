@@ -24,7 +24,7 @@ module Classification
 
     private
     def define
-      raise ArgumentError, "you have not specified a hostname to classify" unless options[:hostname]
+      raise ArgumentError, 'you have not specified a hostname to classify' unless options[:hostname]
       raise ArgumentError, "the hostname: #{options[:hostname]} is invalid" unless hostname? options[:hostname]
       verbose "define: attemping to classify hostname: '#{options[:hostname]}'"
       classify options[:hostname] do |node|
@@ -41,17 +41,17 @@ module Classification
       end
     end
 
-    def classify hostname, regex = false
+    def classify(hostname, regex = false)
       # step: iterate the nodes
       list = []
       verbose "classify: hostname: #{hostname}"
-      nodes hostname, regex do |name,definition|
+      nodes hostname, regex do |name, definition|
         verbose "classify: name: #{name}, definition: #{definition}"
         host = {}
         # step: do we have any groups we need to merge?
         if definition.has_key? 'groups'
           definition['groups'].each do |x|
-            host.deep_merge!( groups[x] || {} )
+            host.deep_merge!(groups[x] || {})
           end
         end
         # step: merge the definition into the host config
@@ -65,11 +65,11 @@ module Classification
       list
     end
 
-    def nodes hostname, regex = false
-      raise ArgumentError, "yopu have not passed a block" unless block_given?
-      (classification['nodes'] || {}).each_pair do |k,v|
-        yield k,v if hostname[/#{k}/] and !regex
-        yield k,v if k[/#{hostname}/] and regex
+    def nodes(hostname, regex = false)
+      raise ArgumentError, 'yopu have not passed a block' unless block_given?
+      (classification['nodes'] || {}).each_pair do |k, v|
+        yield k, v if hostname[/#{k}/] and !regex
+        yield k, v if k[/#{hostname}/] and regex
       end
     end
 
@@ -90,11 +90,11 @@ module Classification
       @classification
     end
 
-    def verbose message
-      puts "[verb] %s" % [ message ] if options[:verbose]
+    def verbose(message)
+      puts '[verb] %s' % [message] if options[:verbose]
     end
 
-    def hostname? name
+    def hostname?(name)
       name =~ /(^[[:alpha:]\-]*)([0-9]+)/
     end
 

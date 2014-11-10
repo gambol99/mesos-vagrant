@@ -1,0 +1,13 @@
+require "capistrano_colors" unless ENV["NO_COLORS"] == "true"
+require "capistrano/ext/multistage"
+require "artii"
+
+def asciify(line)
+  puts "\n"
+  puts Artii::Base.new(:font => 'colossal').asciify(line)
+  puts "\n"
+end
+
+load 'deploy'
+load 'config/deploy'
+Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
