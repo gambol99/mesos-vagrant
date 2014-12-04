@@ -2,17 +2,19 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "hub:5000/komljen-apache",
+      "image": "quay.io/gambol99/apache-php:latest",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 80, "hostPort": 0, "protocol": "tcp"}
+        { "containerPort": 80, "hostPort": 0, "protocol": "tcp"},
+        { "containerPort": 443, "hostPort": 0, "protocol": "tcp"}
       ]
     }
   },
   "args": [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND" ],
   "env": {
-    "APP": "apache",
     "ENVIRONMENT": "prod",
+    "SERVICE_80_NAME": "apache_http",
+    "SERVICE_443_NAME": "apache_https",
     "NAME": "frontend"
   },
   "id": "apache",
