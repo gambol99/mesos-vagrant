@@ -1,0 +1,29 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "tutum/mysql",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 3306, "hostPort": 0, "protocol": "tcp"}
+      ]
+    }
+  },
+  "env": {
+    "ENVIRONMENT": "prod",
+    "NAME": "mysql_slave",
+    "SERVICE_NAME": "mysql_slave",
+    "SERVICE_3306_NAME": "mysql_slave",
+    "MYSQL_PORT_3306_TCP_ADDR": "172.17.42.1",
+    "MYSQL_PORT_3306_TCP_PORT": "3306",
+    "MYSQL_PASS": "mysql",
+    "REPLICATION_SLAVE": "true",
+    "MYSQL_ENV_REPLICATION_USER": "replication",
+    "MYSQL_ENV_REPLICATION_PASS": "8d67as9f7sjhsdfsd",
+    "BACKEND_MYSQL_MASTER": "mysql;3306"
+  },
+  "id": "dbslave",
+  "instances": "2",
+  "cpus": "0.3",
+  "mem": "64"
+}

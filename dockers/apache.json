@@ -15,7 +15,9 @@
     "ENVIRONMENT": "prod",
     "SERVICE_80_NAME": "apache_http",
     "SERVICE_443_NAME": "apache_https",
-    "NAME": "frontend"
+    "NAME": "frontend",
+    "BACKEND_MYSQL_MASTER": "mysql;3306",
+    "BACKEND_MYSQL_SLAVES": "mysql_slave;3307"
   },
   "id": "apache",
   "instances": "2",

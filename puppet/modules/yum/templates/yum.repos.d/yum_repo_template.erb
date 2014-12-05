@@ -1,0 +1,17 @@
+<%- ( @repo['urls'] || {} ).each_pair do |store,url| -%>
+[<%= "#{@name}-#{store}" %>]
+name = <%= "#{@name}-#{store}" %>
+<%- if !@use_internal -%>
+baseurl = <%= url %>
+<%- else -%>
+baseurl = http://yum.<%="#{@domain}/#{version}/#{store}-#{@architecture}/#{store}" %>
+<%- end -%>
+<%- if @repo['gpg'] -%>
+gpgcheck=1
+gpgkey=<%= "file:///etc/pki/rpm-gpg/#{@repo['gpg']}" %>
+<%- else -%>
+gpgcheck=0
+<%- end -%>
+enabled=1
+
+<%- end -%>

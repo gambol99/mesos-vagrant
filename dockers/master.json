@@ -1,0 +1,26 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "tutum/mysql",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 3306, "hostPort": 0, "protocol": "tcp"}
+      ]
+    }
+  },
+  "env": {
+    "ENVIRONMENT": "prod",
+    "SERVICE_NAME": "dbmaster",
+    "SERVICE_3306_NAME": "mysql",
+    "MYSQL_PASS": "mysql",
+    "REPLICATION_MASTER": "true",
+    "REPLICATION_USER": "replication",
+    "REPLICATION_PASS": "8d67as9f7sjhsdfsd"
+  },
+  "id": "dbmaster",
+  "instances": "1",
+  "cpus": "0.3",
+  "mem": "128"
+}
+
