@@ -1,5 +1,5 @@
 class repos::repo::mesosphere {
-  include repo
+  include repos
   include apt
 
   apt::source { 'mesosphere':
