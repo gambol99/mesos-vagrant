@@ -9,7 +9,7 @@ groups:
   default:
     parameters:
       application: mesos
-      environment: hq
+      environment: dev
     classes:
       resolv:
       bash:
