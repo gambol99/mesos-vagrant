@@ -3,7 +3,7 @@ class repos::repo::mesosphere {
   include apt
 
   apt::source { 'mesosphere':
-    location    => "http://repos.mesosphere.io/${distro}",
+    location    => "http://repos.mesosphere.io/ubuntu",
     release     => $::lsbdistcodename,
     repos       => 'main',
     key         => 'E56151BF',
