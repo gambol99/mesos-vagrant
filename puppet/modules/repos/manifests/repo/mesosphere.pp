@@ -4,7 +4,7 @@ class repos::repo::mesosphere {
 
   apt::source { 'mesosphere':
     location    => "http://repos.mesosphere.io/ubuntu",
-    release     => $::lsbdistcodename,
+    release     => 'trusty',
     repos       => 'main',
     key         => 'E56151BF',
     key_server  => 'keyserver.ubuntu.com',

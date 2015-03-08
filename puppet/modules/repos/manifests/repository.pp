@@ -10,7 +10,7 @@ define repo::repository {
         'mesosphere': {
           apt::source { 'mesosphere':
             location    => "http://repos.mesosphere.io/${distro}",
-            release     => $::lsbdistcodename,
+            release     => 'trusty',
             repos       => 'main',
             key         => 'E56151BF',
             key_server  => 'keyserver.ubuntu.com',

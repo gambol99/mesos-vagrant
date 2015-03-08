@@ -52,8 +52,8 @@ install_puppet() {
     yum update -y puppet
   elif ubuntu; then
     say "Installing Puppet for Ubuntu"
-    sudo wget -q https://apt.puppetlabs.com/puppetlabs-release-trusty.deb
-    sudo dpkg -i puppetlabs-release-trusty.deb
+    sudo wget -q https://apt.puppetlabs.com/puppetlabs-release-utopic.deb
+    sudo dpkg -i puppetlabs-release-utopic.deb
     sudo apt-get update
     sudo apt-get install -y puppet
     sudo apt-get install -y --no-install-recommends --force-yes --only-upgrade puppet 2>/dev/null
