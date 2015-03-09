@@ -1,7 +1,7 @@
 ---
 default_options: &defaults
-  box_name: cloud-ubuntu
-  box_url: https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+  box_name: ubuntu-utopic
+  box_url: https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box
   bootstrap:
     type: script
     script: ./boot/bootstrap.sh
